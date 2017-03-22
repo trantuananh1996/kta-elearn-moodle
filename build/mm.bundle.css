@@ -11223,7 +11223,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
  * App Branding
  */
 .mm-bglogo {
-    background-color: white;
+    background-image: url('../img/moodle2.png');
     /* Change this to add a bg image or change color */
     background-repeat: no-repeat;
     background-position: center center;
@@ -11240,11 +11240,12 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 }
 
 .mm-logo {
-    background-image: url('../img/moodle2.png');
+   /* background-image: url('../img/moodle2.png');
     /* Change logo here */
+    background: transparent;
     background-repeat: no-repeat;
     background-position: center center;
-
+    position: absolute;
     top: 0;
     bottom: 0;
     text-align: center;
