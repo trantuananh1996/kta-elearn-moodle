@@ -11228,10 +11228,8 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     background-repeat: no-repeat;
     background-position: center center;
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
 }
 
@@ -11242,14 +11240,15 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 }
 
 .mm-logo {
-    /* background-image: url('../img/moodle2.png');
-     /* Change logo here */
-    background: transparent;
+    background-image: url('../img/moodle2.png');
+    /* Change logo here */
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
     top: 0;
     bottom: 0;
+    left:0;
+    right: 0;
     text-align: center;
 }
 
