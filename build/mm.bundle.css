@@ -11235,7 +11235,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 
 @media only screen and (max-width: 680px) {
     .mm-logo {
-        width: 100%;
+        width: 500px;
     }
 }
 
@@ -11243,6 +11243,8 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     background-image: url('../img/moodle2.png');
     /* Change logo here */
     background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
     top: 0;
     bottom: 0;
     text-align: center;
