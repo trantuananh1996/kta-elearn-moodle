@@ -11235,7 +11235,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 
 @media only screen and (max-width: 680px) {
     .mm-logo {
-        width: 500px;
+        width: 100%;
     }
 }
 
@@ -11244,6 +11244,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     /* Change logo here */
     background-repeat: no-repeat;
     background-position: center center;
+
     top: 0;
     bottom: 0;
     text-align: center;
