@@ -11233,7 +11233,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     bottom: 0;
 }
 
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 680px) {
     .mm-logo {
         width: 100%;
     }
