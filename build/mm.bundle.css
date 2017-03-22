@@ -11244,7 +11244,6 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     /* Change logo here */
     background-repeat: no-repeat;
     background-position: center center;
-    position: absolute;
     top: 0;
     bottom: 0;
     text-align: center;
