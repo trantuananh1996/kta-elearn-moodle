@@ -11228,7 +11228,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     background-repeat: no-repeat;
     background-position: center center;
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
 }
