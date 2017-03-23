@@ -20021,7 +20021,7 @@ angular.module('mm.core.sidemenu')
                         $scope.data.showDelete = false;
                         $mmSitesManager.hasNoSites().then(function () {
                             $ionicHistory.nextViewOptions({disableBack: true});
-                            $mmLoginHelper.goToAddSite();
+                            $state.go('mm_login.site');
                         });
                     }, function () {
                         $log.error('Delete site failed');
