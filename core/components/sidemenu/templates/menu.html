@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="item item-icon-left" ng-click="deleteSite(getStoredCurrentSiteId())" title="{{ 'mm.sidemenu.changesite' | translate}}">
+                        <a class="item item-icon-left" ng-click='onItemDelete($event, $index)' title="{{ 'mm.sidemenu.changesite' | translate}}">
                             <i class="icon ion-log-out"></i>{{ logoutLabel | translate}}
                         </a>
                     </li>
