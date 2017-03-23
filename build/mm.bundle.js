@@ -20012,7 +20012,8 @@ angular.module('mm.core.sidemenu')
         $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
         loadSiteInfo();
         $scope.logout = function () {
-            var site = $scope.sites[0],
+            $state.go('mm_login.site');
+           /* var site = $scope.sites[0],
                 sitename = site.sitename;
             $mmText.formatText(sitename).then(function (sitename) {
                 $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function () {
@@ -20028,7 +20029,7 @@ angular.module('mm.core.sidemenu')
                         $mmUtil.showErrorModal('mm.login.errordeletesite', true);
                     });
                 });
-            });
+            });*/
            /* $mmSitesManager.logout().finally(function () {
                 $state.go('mm_login.sites');
             });*/
