@@ -20005,32 +20005,27 @@ angular.module('mm.core.sidemenu')
     }]);
 
 angular.module('mm.core.sidemenu')
-    .controller('mmSideMenuCtrl', ["$scope", "$state", "$mmSideMenuDelegate", "$mmSitesManager", "$mmSite", "$mmEvents", "$timeout", "mmCoreEventLanguageChanged", "mmCoreEventSiteUpdated", "$mmSideMenu", "$mmCourses", function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
-                                                                                                                                                                                                                                    $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses) {
+    .controller('mmSideMenuCtrl', ["$scope", "$state", "$mmSideMenuDelegate", "$mmSitesManager", "$mmSite", "$mmEvents", "$timeout", "mmCoreEventLanguageChanged", "mmCoreEventSiteUpdated", "$mmSideMenu", "$mmCourses", "$ionicHistory",  "$mmLoginHelper", function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
+                                                                                                                                                                                                                                    $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses,$ionicHistory, $mmLoginHelper) {
         $mmSideMenu.setScope($scope);
         $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
         $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
         loadSiteInfo();
         $scope.logout = function () {
-            $state.go('mm_login.site');
-           /* var site = $scope.sites[0],
+            var site = $scope.sites[0],
                 sitename = site.sitename;
-            $mmText.formatText(sitename).then(function (sitename) {
-                $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function () {
-                    $mmSitesManager.deleteSite(site.id).then(function () {
-                        $scope.sites.splice(0, 1);
-                        $scope.data.showDelete = false;
-                        $mmSitesManager.hasNoSites().then(function () {
-                            $ionicHistory.nextViewOptions({disableBack: true});
-                            $state.go('mm_login.site');
-                        });
-                    }, function () {
-                        $log.error('Delete site failed');
-                        $mmUtil.showErrorModal('mm.login.errordeletesite', true);
-                    });
+            $mmSitesManager.deleteSite(site.id).then(function () {
+                $scope.sites.splice(0, 1);
+                $scope.data.showDelete = false;
+                $mmSitesManager.hasNoSites().then(function () {
+                    $ionicHistory.nextViewOptions({disableBack: true});
+                    $mmLoginHelper.goToAddSite();
                 });
-            });*/
-           /* $mmSitesManager.logout().finally(function () {
+            }, function () {
+             //   $log.error('Delete site failed');
+              //  $mmUtil.showErrorModal('mm.login.errordeletesite', true);
+            });
+         /*   $mmSitesManager.logout().finally(function () {
                 $state.go('mm_login.sites');
             });*/
         };
