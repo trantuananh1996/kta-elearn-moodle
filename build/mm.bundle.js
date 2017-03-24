@@ -20005,8 +20005,8 @@ angular.module('mm.core.sidemenu')
     }]);
 
 angular.module('mm.core.sidemenu')
-    .controller('mmSideMenuCtrl', ["$scope", "$state", "$mmSideMenuDelegate", "$mmSitesManager", "$mmSite", "$mmEvents", "$timeout", "mmCoreEventLanguageChanged", "mmCoreEventSiteUpdated", "$mmSideMenu", "$mmCourses", "$ionicHistory",  "$mmLoginHelper","$mmUtil", function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
-                                                                                                                                                                                                                                    $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses,$ionicHistory, $mmLoginHelper,$mmUtil) {
+    .controller('mmSideMenuCtrl', ["$scope", "$state", "$mmSideMenuDelegate", "$mmSitesManager", "$mmSite", "$mmEvents", "$timeout", "mmCoreEventLanguageChanged", "mmCoreEventSiteUpdated", "$mmSideMenu", "$mmCourses", "$ionicHistory",  "$mmLoginHelper","$mmUtil","$translate", function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
+                                                                                                                                                                                                                                    $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses,$ionicHistory, $mmLoginHelper,$mmUtil,$translate) {
         $mmSideMenu.setScope($scope);
         $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
         $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
