@@ -20024,17 +20024,36 @@ angular.module('mm.core.sidemenu')
         "$log",
         function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite,
                   $mmEvents,
-             $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated,
-                  $mmSideMenu, $mmCourses,$ionicHistory, $mmLoginHelper,$mmUtil,$translate,$mmText,$log) {
-        $mmSideMenu.setScope($scope);
-        $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
-        $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
-        loadSiteInfo();
-        $scope.logout = function () {
-            $mmUtil.showConfirm($translate.instant('mm.login.confirmlogout')).then(function () {
+                  $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated,
+                  $mmSideMenu, $mmCourses, $ionicHistory, $mmLoginHelper, $mmUtil, $translate, $mmText, $log) {
+            $mmSideMenu.setScope($scope);
+            $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
+            $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
+            loadSiteInfo();
+            $scope.logout = function () {
                 var site = $mmSitesManager.getCurrentSite();
-                var    sitename = site.sitename;
-                $mmUtil.showErrorModal('mm.login.errordeletesite', true);
+                var sitename = site.sitename;
+                $mmText.formatText(sitename).then(function (sitename) {
+                    $mmUtil.showConfirm($translate.instant($translate.instant('mm.login.confirmlogout'))).then(function () {
+                        $mmSitesManager.deleteSite(site.id).then(function () {
+                            $scope.sites.splice(0, 1);
+                            $scope.data.showDelete = false;
+                            $ionicHistory.nextViewOptions({disableBack: true});
+                            $mmLoginHelper.goToAddSite();
+                        }, function () {
+                            $log.error('Delete site failed');
+                            $mmUtil.showErrorModal('mm.login.errordeletesite', true);
+                        });
+                    });
+                });
+                /*  $mmSitesManager.logout().finally(function () {
+                 $state.go('mm_login.sites');
+                 });*/
+            };
+            $scope.onItemDelete = function (e) {
+                e.stopPropagation();
+                var site = $scope.sites[0],
+                    sitename = site.sitename;
                 $mmText.formatText(sitename).then(function (sitename) {
                     $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function () {
                         $mmSitesManager.deleteSite(site.id).then(function () {
@@ -20050,69 +20069,44 @@ angular.module('mm.core.sidemenu')
                         });
                     });
                 });
-              /*  $mmSitesManager.logout().finally(function () {
-                    $state.go('mm_login.sites');
-                });*/
-            });
-
-        };
-        $scope.onItemDelete = function (e) {
-            e.stopPropagation();
-            var site = $scope.sites[0],
-                sitename = site.sitename;
-            $mmText.formatText(sitename).then(function (sitename) {
-                $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function () {
-                    $mmSitesManager.deleteSite(site.id).then(function () {
-                        $scope.sites.splice(0, 1);
-                        $scope.data.showDelete = false;
-                        $mmSitesManager.hasNoSites().then(function () {
-                            $ionicHistory.nextViewOptions({disableBack: true});
-                            $mmLoginHelper.goToAddSite();
-                        });
-                    }, function () {
-                        $log.error('Delete site failed');
-                        $mmUtil.showErrorModal('mm.login.errordeletesite', true);
-                    });
+            };
+            function loadSiteInfo() {
+                var config = $mmSite.getStoredConfig();
+                $scope.siteinfo = $mmSite.getInfo();
+                $scope.logoutLabel = 'mm.sidemenu.' + (config && config.tool_mobile_forcelogout == "1" ? 'logout' : 'changesite');
+                $scope.showMyCourses = !$mmCourses.isMyCoursesDisabledInSite();
+                $scope.showWeb = !$mmSite.isFeatureDisabled('$mmSideMenuDelegate_website');
+                $scope.showHelp = !$mmSite.isFeatureDisabled('$mmSideMenuDelegate_help');
+                $mmSite.getDocsUrl().then(function (docsurl) {
+                    $scope.docsurl = docsurl;
                 });
-            });
-        };
-        function loadSiteInfo() {
-            var config = $mmSite.getStoredConfig();
-            $scope.siteinfo = $mmSite.getInfo();
-            $scope.logoutLabel = 'mm.sidemenu.' + (config && config.tool_mobile_forcelogout == "1" ? 'logout' : 'changesite');
-            $scope.showMyCourses = !$mmCourses.isMyCoursesDisabledInSite();
-            $scope.showWeb = !$mmSite.isFeatureDisabled('$mmSideMenuDelegate_website');
-            $scope.showHelp = !$mmSite.isFeatureDisabled('$mmSideMenuDelegate_help');
-            $mmSite.getDocsUrl().then(function (docsurl) {
-                $scope.docsurl = docsurl;
-            });
-            $mmSideMenu.getCustomMenuItems().then(function (items) {
-                $scope.customItems = items;
-            });
-        }
+                $mmSideMenu.getCustomMenuItems().then(function (items) {
+                    $scope.customItems = items;
+                });
+            }
 
-        function updateSiteInfo() {
-            $scope.siteinfo = undefined;
-            $timeout(function () {
-                loadSiteInfo();
-            });
-        }
+            function updateSiteInfo() {
+                $scope.siteinfo = undefined;
+                $timeout(function () {
+                    loadSiteInfo();
+                });
+            }
 
-        var langObserver = $mmEvents.on(mmCoreEventLanguageChanged, updateSiteInfo);
-        var updateSiteObserver = $mmEvents.on(mmCoreEventSiteUpdated, function (siteid) {
-            if ($mmSite.getId() === siteid) {
-                updateSiteInfo();
-            }
-        });
-        $scope.$on('$destroy', function () {
-            if (langObserver && langObserver.off) {
-                langObserver.off();
-            }
-            if (updateSiteObserver && updateSiteObserver.off) {
-                updateSiteObserver.off();
-            }
-        });
-    }]);
+            var langObserver = $mmEvents.on(mmCoreEventLanguageChanged, updateSiteInfo);
+            var updateSiteObserver = $mmEvents.on(mmCoreEventSiteUpdated, function (siteid) {
+                if ($mmSite.getId() === siteid) {
+                    updateSiteInfo();
+                }
+            });
+            $scope.$on('$destroy', function () {
+                if (langObserver && langObserver.off) {
+                    langObserver.off();
+                }
+                if (updateSiteObserver && updateSiteObserver.off) {
+                    updateSiteObserver.off();
+                }
+            });
+        }]);
 
 angular.module('mm.core.sidemenu')
     .provider('$mmSideMenuDelegate', function () {
