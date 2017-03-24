@@ -20016,6 +20016,26 @@ angular.module('mm.core.sidemenu')
                 $state.go('mm_login.sites');
             });
         };
+        $scope.onItemDelete = function (e) {
+            e.stopPropagation();
+            var site = $scope.sites[0],
+                sitename = site.sitename;
+            $mmText.formatText(sitename).then(function (sitename) {
+                $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function () {
+                    $mmSitesManager.deleteSite(site.id).then(function () {
+                        $scope.sites.splice(0, 1);
+                        $scope.data.showDelete = false;
+                        $mmSitesManager.hasNoSites().then(function () {
+                            $ionicHistory.nextViewOptions({disableBack: true});
+                            $mmLoginHelper.goToAddSite();
+                        });
+                    }, function () {
+                        $log.error('Delete site failed');
+                        $mmUtil.showErrorModal('mm.login.errordeletesite', true);
+                    });
+                });
+            });
+        };
         function loadSiteInfo() {
             var config = $mmSite.getStoredConfig();
             $scope.siteinfo = $mmSite.getInfo();
