@@ -48,8 +48,8 @@
           <file leaf-file-name="mm.bundle.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/build/mm.bundle.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="211">
-                  <caret line="20040" column="39" selection-start-line="20040" selection-start-column="39" selection-end-line="20040" selection-end-column="39" />
+                <state relative-caret-position="177">
+                  <caret line="20038" column="50" selection-start-line="20038" selection-start-column="50" selection-end-line="20038" selection-end-column="50" />
                   <folding>
                     <element signature="e#241303#241528#0" expanded="false" />
                     <element signature="e#241584#242721#0" expanded="false" />
@@ -84,8 +84,8 @@
                     <element signature="e#263328#263498#0" expanded="false" />
                     <element signature="e#263557#263700#0" expanded="false" />
                     <element signature="e#838891#839960#0" expanded="false" />
-                    <marker date="1490346075737" expanded="true" signature="319354:319464" ph="..." />
-                    <marker date="1490346075737" expanded="true" signature="1351761:1351767" ph=" " />
+                    <marker date="1490346476627" expanded="true" signature="319354:319464" ph="..." />
+                    <marker date="1490346476627" expanded="true" signature="1351883:1351889" ph=" " />
                   </folding>
                 </state>
               </provider>
@@ -161,8 +161,8 @@
           <file leaf-file-name="mm.bundle.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/build/mm.bundle.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="11007" column="23" selection-start-line="11007" selection-start-column="23" selection-end-line="11007" selection-end-column="23" />
+                <state relative-caret-position="211">
+                  <caret line="17818" column="17" selection-start-line="17818" selection-start-column="0" selection-end-line="17819" selection-end-column="0" />
                   <folding>
                     <element signature="e#241303#241528#0" expanded="false" />
                     <element signature="e#241584#242721#0" expanded="false" />
@@ -198,8 +198,8 @@
                     <element signature="e#263148#263289#0" expanded="false" />
                     <element signature="e#263328#263498#0" expanded="false" />
                     <element signature="e#263557#263700#0" expanded="false" />
-                    <marker date="1490346075737" expanded="true" signature="319354:319464" ph="..." />
-                    <marker date="1490346075737" expanded="true" signature="1351761:1351767" ph=" " />
+                    <marker date="1490346476627" expanded="true" signature="319354:319464" ph="..." />
+                    <marker date="1490346476627" expanded="true" signature="1351883:1351889" ph=" " />
                   </folding>
                 </state>
               </provider>
@@ -343,12 +343,12 @@
       <workItem from="1490169448700" duration="1524000" />
       <workItem from="1490171528724" duration="7412000" />
       <workItem from="1490278266593" duration="7176000" />
-      <workItem from="1490338197654" duration="6357000" />
+      <workItem from="1490338197654" duration="6739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22469000" />
+    <option name="totallyTimeSpent" value="22851000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -445,8 +445,8 @@
             <element signature="e#263328#263498#0" expanded="false" />
             <element signature="e#263557#263700#0" expanded="false" />
             <element signature="e#838891#839960#0" expanded="false" />
-            <marker date="1490346075737" expanded="true" signature="319354:319464" ph="..." />
-            <marker date="1490346075737" expanded="true" signature="1351761:1351767" ph=" " />
+            <marker date="1490346476627" expanded="true" signature="319354:319464" ph="..." />
+            <marker date="1490346476627" expanded="true" signature="1351883:1351889" ph=" " />
           </folding>
         </state>
       </provider>
@@ -2516,8 +2516,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build/mm.bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="20040" column="39" selection-start-line="20040" selection-start-column="39" selection-end-line="20040" selection-end-column="39" />
+        <state relative-caret-position="177">
+          <caret line="20038" column="50" selection-start-line="20038" selection-start-column="50" selection-end-line="20038" selection-end-column="50" />
           <folding>
             <element signature="e#241303#241528#0" expanded="false" />
             <element signature="e#241584#242721#0" expanded="false" />
@@ -2552,8 +2552,8 @@
             <element signature="e#263328#263498#0" expanded="false" />
             <element signature="e#263557#263700#0" expanded="false" />
             <element signature="e#838891#839960#0" expanded="false" />
-            <marker date="1490346075737" expanded="true" signature="319354:319464" ph="..." />
-            <marker date="1490346075737" expanded="true" signature="1351761:1351767" ph=" " />
+            <marker date="1490346476627" expanded="true" signature="319354:319464" ph="..." />
+            <marker date="1490346476627" expanded="true" signature="1351883:1351889" ph=" " />
           </folding>
         </state>
       </provider>

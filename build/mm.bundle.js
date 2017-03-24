@@ -20034,7 +20034,8 @@ angular.module('mm.core.sidemenu')
                 var site = $mmSitesManager.getCurrentSite();
                 $mmUtil.showConfirm($translate.instant($translate.instant('mm.login.confirmlogout'))).then(function () {
                     $mmSitesManager.deleteSite(site.id).then(function () {
-                        $state.go('mm_login.site');
+                        $ionicHistory.nextViewOptions({disableBack: true});
+                        $state.go('mm_login.credentials', {siteurl: 'http://www.kta.elearn.vn'});
                         /*  $scope.sites.splice(0, 1);
                          $scope.data.showDelete = false;
                          $ionicHistory.nextViewOptions({disableBack: true});
