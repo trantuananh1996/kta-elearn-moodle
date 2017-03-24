@@ -20032,8 +20032,9 @@ angular.module('mm.core.sidemenu')
         loadSiteInfo();
         $scope.logout = function () {
             $mmUtil.showConfirm($translate.instant('mm.login.confirmlogout')).then(function () {
-                var site = $scope.sites[0],
-                    sitename = site.sitename;
+                var site = $mmSitesManager.getCurrentSite();
+                var    sitename = site.sitename;
+                $mmUtil.showErrorModal('mm.login.errordeletesite', true);
                 $mmText.formatText(sitename).then(function (sitename) {
                     $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function () {
                         $mmSitesManager.deleteSite(site.id).then(function () {
