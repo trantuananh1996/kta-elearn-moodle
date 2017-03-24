@@ -20005,16 +20005,19 @@ angular.module('mm.core.sidemenu')
     }]);
 
 angular.module('mm.core.sidemenu')
-    .controller('mmSideMenuCtrl', ["$scope", "$state", "$mmSideMenuDelegate", "$mmSitesManager", "$mmSite", "$mmEvents", "$timeout", "mmCoreEventLanguageChanged", "mmCoreEventSiteUpdated", "$mmSideMenu", "$mmCourses", "$ionicHistory",  "$mmLoginHelper", function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
-                                                                                                                                                                                                                                    $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses,$ionicHistory, $mmLoginHelper) {
+    .controller('mmSideMenuCtrl', ["$scope", "$state", "$mmSideMenuDelegate", "$mmSitesManager", "$mmSite", "$mmEvents", "$timeout", "mmCoreEventLanguageChanged", "mmCoreEventSiteUpdated", "$mmSideMenu", "$mmCourses", "$ionicHistory",  "$mmLoginHelper","$mmUtil", function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
+                                                                                                                                                                                                                                    $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses,$ionicHistory, $mmLoginHelper,$mmUtil) {
         $mmSideMenu.setScope($scope);
         $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
         $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
         loadSiteInfo();
         $scope.logout = function () {
-            $mmSitesManager.logout().finally(function () {
-                $state.go('mm_login.sites');
+            $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: 'test'})).then(function () {
+                $mmSitesManager.logout().finally(function () {
+                    $state.go('mm_login.sites');
+                });
             });
+
         };
         $scope.onItemDelete = function (e) {
             e.stopPropagation();
