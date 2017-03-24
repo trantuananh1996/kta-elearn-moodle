@@ -52993,7 +52993,7 @@ angular.module('mm.core')
             "languages": {"en": "English", "vi": "Tiếng Việt"},
             "wsservice": "moodle_mobile_app",
             "wsextservice": "local_mobile",
-            "gcmpn": "694767596569",
+            "gcmpn": "411102123785",
             "customurlscheme": "moodlemobile",
             "siteurl": "http://www.kta.elearn.vn",
             "skipssoconfirmation": "false",
