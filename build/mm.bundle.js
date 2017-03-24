@@ -20032,18 +20032,16 @@ angular.module('mm.core.sidemenu')
             loadSiteInfo();
             $scope.logout = function () {
                 var site = $mmSitesManager.getCurrentSite();
-                var sitename = site.sitename;
-                $mmText.formatText(sitename).then(function (sitename) {
-                    $mmUtil.showConfirm($translate.instant($translate.instant('mm.login.confirmlogout'))).then(function () {
-                        $mmSitesManager.deleteSite(site.id).then(function () {
-                            $scope.sites.splice(0, 1);
-                            $scope.data.showDelete = false;
-                            $ionicHistory.nextViewOptions({disableBack: true});
-                            $mmLoginHelper.goToAddSite();
-                        }, function () {
-                            $log.error('Delete site failed');
-                            $mmUtil.showErrorModal('mm.login.errordeletesite', true);
-                        });
+                $mmUtil.showConfirm($translate.instant($translate.instant('mm.login.confirmlogout'))).then(function () {
+                    $mmSitesManager.deleteSite(site.id).then(function () {
+                        $state.go('mm_login.site');
+                        /*  $scope.sites.splice(0, 1);
+                         $scope.data.showDelete = false;
+                         $ionicHistory.nextViewOptions({disableBack: true});
+                         $mmLoginHelper.goToAddSite();*/
+                    }, function () {
+                        $log.error('Delete site failed');
+                        $mmUtil.showErrorModal('mm.login.errordeletesite', true);
                     });
                 });
                 /*  $mmSitesManager.logout().finally(function () {
