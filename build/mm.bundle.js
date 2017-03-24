@@ -20022,10 +20022,12 @@ angular.module('mm.core.sidemenu')
         "$translate",
         "$mmText",
         "$log",
+        "mmCoreConfigConstants",
         function ($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite,
                   $mmEvents,
                   $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated,
-                  $mmSideMenu, $mmCourses, $ionicHistory, $mmLoginHelper, $mmUtil, $translate, $mmText, $log) {
+                  $mmSideMenu, $mmCourses, $ionicHistory, $mmLoginHelper, $mmUtil, $translate,
+                  $mmText, $log,mmCoreConfigConstants) {
             $mmSideMenu.setScope($scope);
             $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
             $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
@@ -20035,7 +20037,7 @@ angular.module('mm.core.sidemenu')
                 $mmUtil.showConfirm($translate.instant($translate.instant('mm.login.confirmlogout'))).then(function () {
                     $mmSitesManager.deleteSite(site.id).then(function () {
                         $ionicHistory.nextViewOptions({disableBack: true});
-                        $state.go('mm_login.credentials', {siteurl: 'http://www.kta.elearn.vn'});
+                        $state.go('mm_login.credentials', {siteurl: mmCoreConfigConstants.siteurl});
                         /*  $scope.sites.splice(0, 1);
                          $scope.data.showDelete = false;
                          $ionicHistory.nextViewOptions({disableBack: true});
