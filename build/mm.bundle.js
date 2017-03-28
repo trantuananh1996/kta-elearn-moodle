@@ -52985,7 +52985,7 @@ angular.module('mm.core')
 
     .constant('mmCoreConfigConstants', {
             "app_id": "vn.omt.elearn.kta",
-            "appname": "KTA Elearn",
+            "appname": "KTA Elearning",
             "versioncode": "1",
             "versionname": "1.0.0",
             "cache_expiration_time": 300000,

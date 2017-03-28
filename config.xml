@@ -5,14 +5,14 @@
         id        = "vn.omt.elearn.kta"
         versionCode = "1"
         version   = "1.0.0">
-    <name>KTA Elearn</name>
+    <name>KTA Elearning</name>
 
     <description>
         App Elearning cho Khoa Tiếng Anh - ĐHNN, ĐHQGHN
     </description>
 
-    <author href="http://moodle.com" email="mobile@moodle.com">
-        Moodle Pty Ltd
+    <author href="http://schoolonline.edu.vn" email="schoolonline@omt.vn">
+        Schoolonline
     </author>
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
